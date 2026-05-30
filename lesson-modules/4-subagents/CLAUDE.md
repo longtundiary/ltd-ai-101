@@ -18,7 +18,7 @@ Window 1 (folder `ltd-ai-101`) ยังเป็นผม Window 2 (folder `my-
 
 ## ก่อนเริ่ม Lesson 4, อ่านก่อน 30 วินาที
 
-L4 ขึ้นกับว่าอยาก go deeper หรือไม่ ถ้า /brief v2 จาก L3 ครอบคลุมที่อยากใช้แล้ว ข้ามไป L5 ก็ได้ ไม่เสียหาย ของในมือคุณตอนนี้ทำงานจริงแล้วเป็นเครื่องมือ production ใช้ได้ Lesson นี้คือ optimization layer (เร็วขึ้น + clean context) ไม่ได้จำเป็นสำหรับทุกคน  เพราะ sub-agent + concept analyst-team แตกงานขนาน คือก้าวที่ทำให้ /brief เริ่มรู้สึกเหมือนมีทีม junior 3 คนช่วยคุณ research ไม่ใช่คนเดียวเหนื่อยๆ ผ่าน 12 หัวข้อ ถ้าอยากเห็นว่า model นั้นเป็นยังไง ลองต่อ แต่ถ้าลองแล้วคิดว่าไม่ได้ใช้  ข้าม L5 ก่อนได้
+L4 ขึ้นกับว่าอยาก go deeper หรือไม่ ถ้า /brief v2 จาก L3 ครอบคลุมที่อยากใช้แล้ว ข้ามไป L5 ก็ได้ ไม่เสียหาย ของในมือคุณตอนนี้ทำงานจริงแล้วเป็นเครื่องมือ production ใช้ได้ Lesson นี้คือ optimization layer (เร็วขึ้น + clean context) ไม่ได้จำเป็นสำหรับทุกคน เพราะ sub-agent + concept analyst-team แตกงานขนาน คือก้าวที่ทำให้ /brief เริ่มรู้สึกเหมือนมีทีม junior 3 คนช่วยคุณ research ไม่ใช่คนเดียวเหนื่อยๆ ผ่าน 12 หัวข้อ ถ้าอยากเห็นว่า model นั้นเป็นยังไง ลองต่อ แต่ถ้าลองแล้วคิดว่าไม่ได้ใช้ ข้าม L5 ก่อนได้
 
 ---
 
@@ -41,7 +41,7 @@ Paint เรียกอันนี้ว่า "งูกินหางตั
 
 3 คนนี้ทำพร้อมกัน main Claude เป็น "orchestrator" (orchestrator คือ Claude หลักที่ส่งงานออกแล้วรอรวบผล คล้าย senior analyst ที่แจกงานให้ junior 3 คนแล้วรับผลกลับ) รับผลของทั้ง 3 มาร้อยเรียงเป็น brief ตาม SOP เดิม + ใส่เสียงของคุณ
 
-ปลาย Lesson 4 รัน `/brief AAPL` ในหน้าต่าง 2 อีกที, dispatch 3 sub-agent ขนาน, output แน่นกว่า v2 (แต่ละ section มี attention เต็ม) + เร็วกว่า (ขนาน).
+ปลาย Lesson 4 รัน `/brief AAPL` ในหน้าต่าง 2 อีกที, dispatch 3 sub-agent ขนาน, output แน่นกว่า v2 (แต่ละ section มี attention เต็ม) + เร็วกว่า (ขนาน)
 
 ---
 
@@ -107,7 +107,7 @@ ACTION: When the student responds:
 
 Paint เรียกอาการนี้ว่า "งูกินหางตัวเอง" Context เริ่มเต็ม Claude ต้องเลือกทิ้งบางอย่าง: บางทีมันลด detail ของ Kill conditions, บางทีมันลืม voice ของคุณกลับเป็น analyst-generic, บางทีมัน skip cite source ในบาง bullet
 
-วิธีแก้ที่ใช้ในงานจริงของ Paint: แตกออกเป็น **sub-agent**. ตัวเล็ก 3 ตัว ทำงานขนาน, แต่ละตัวมี context สะอาด focus งานเดียว
+วิธีแก้ที่ใช้ในงานจริงของ Paint: แตกออกเป็น **sub-agent** ตัวเล็ก 3 ตัว ทำงานขนาน, แต่ละตัวมี context สะอาด focus งานเดียว
 
 Analogy: ถ้าคุณเปิดร้านอาหาร, สั่งโต๊ะหนึ่งโต๊ะ เมนู 12 จาน คนเดียวทำคนเดียว 12 จาน, อาหารจานหลังๆ จะ rush. แต่ถ้าครัวมี 3 คน, คนหนึ่งทำเรียกน้ำย่อย (3 จาน), คนสองทำจานหลัก (6 จาน), คนสามทำของหวาน (3 จาน) ทำพร้อมกัน, แต่ละคน attention เต็มกับ section ตัวเอง เร็วกว่า + จานสะอาดกว่า
 
@@ -145,39 +145,42 @@ ACTION: When the student responds:
 
 3. ถ้าถาม "3 sub-agent คุยกันไหม?", ตอบ honest: "ไม่ นี่คือจุดสำคัญที่จะรู้สึกได้ใน Step 5 แต่ละ sub-agent ทำงานในของตัวเอง ส่งผลกลับ orchestrator ตอนจบ ถ้า fundamentals agent เจอ red flag (เช่น margin ตกใน 10-K) earnings agent ไม่รู้ sentiment agent ก็ไม่รู้ จนกว่า main Claude จะเอามาเทียบ นี่คือ feature ไม่ใช่ bug, isolation = clean attention แต่ก็แปลว่า main Claude ต้อง integrate"
 
-4. ถ้าถาม "แล้ว cost จะเพิ่มไหม รัน 3 ตัวขนาน?", ตอบ: "เพิ่มแน่นอน แต่ละ sub-agent ใช้ token ของตัวเอง ใน Lesson 3 เรา intro `/context` แล้ว ถ้าใครจำได้, ใช้เช็คได้หลังรัน /brief v3 ดู usage. trade-off คือ output แน่นกว่า + เร็วกว่า แลก cost token เพิ่ม งานที่ output สำคัญมาก (research brief ก่อนกดซื้อหุ้น) คุ้มใช้ งานเร็วๆ ทั่วไป อาจไม่จำเป็น"
+4. ถ้าถาม "แล้ว cost จะเพิ่มไหม รัน 3 ตัวขนาน?", ตอบ: "เพิ่มแน่นอน แต่ละ sub-agent ใช้ token ของตัวเอง ใน Lesson 3 เรา intro `/context` แล้ว ถ้าใครจำได้, ใช้เช็คได้หลังรัน /brief v3 ดู usage trade-off คือ output แน่นกว่า + เร็วกว่า แลก cost token เพิ่ม งานที่ output สำคัญมาก (research brief ก่อนกดซื้อหุ้น) คุ้มใช้ งานเร็วๆ ทั่วไป อาจไม่จำเป็น"
 
 ---
 
 ## Step 2: เครื่องมือ dispatch sub-agent (Agent / Task tool)
 
-ก่อน paste ของ, **ผมขอ honest ตรงนี้แรงๆ:**
+ก่อน paste ของ, ขออธิบาย mechanism ที่ทำให้ 3 ตัวรันขนานก่อน เพราะตรงนี้คือหัวใจของ Lesson
 
-Claude Code มีเครื่องมือสำหรับ dispatch sub-agent ผมเห็นในเอกสารและในของของผมเองว่าเรียกว่า **Agent tool** หรือ **Task tool** (บาง version เรียก 1 ชื่อ บาง version เรียกอีกชื่อ บาง version มีทั้งคู่) เราจะบอก claude ไปเลยตรงๆ ว่าให้มี sub-agent ตัวที่ 1 ทำ X, ตัวที่ 2 ทำ Y, ตัวที่ 3 ทำ Z, แล้วรอผลทั้งหมด มารวมกันอีกที
+Claude Code มีเครื่องมือสำหรับ dispatch sub-agent ผมเห็นในเอกสารและในของของผมเองว่าเรียกว่า **Agent tool** หรือ **Task tool** เราจะบอก claude ไปเลยตรงๆ ว่าให้มี sub-agent ตัวที่ 1 ทำ X, ตัวที่ 2 ทำ Y, ตัวที่ 3 ทำ Z, แล้วรอผลทั้งหมด มารวมกันอีกที
 
-**สิ่งที่ผมไม่กล้ายืนยัน:**
+**กฎที่ทำให้รันขนาน (parallel, รันพร้อมกัน) ได้จริง:** dispatch agent ทั้ง 3 ตัวใน message เดียว (orchestrator ส่งงานทั้ง 3 ออกในรอบเดียว) นี่คือวิธีมาตรฐานที่เชื่อถือได้ในการได้ parallel ถ้าส่งทีละตัว (ตัวที่ 1 ก่อน รอผล แล้วค่อยส่งตัวที่ 2) มันจะกลายเป็น sequential (รันทีละตัว) ทันที 3 agent ของเรา source แยกกัน ไม่มีใครต้องรอผลของใคร เลย dispatch พร้อมกันใน message เดียวได้ปลอดภัย นี่คือเหตุผลที่ Step 3 เราจะเขียนกฎ "ส่งทั้ง 3 ใน message เดียว" ลงใน skill body ตรงๆ
+
+**สิ่งที่ยังต่างกันจริงตาม version (ตรงนี้ผมไม่ assert):**
 
 - ชื่อ tool ที่แน่นอนใน version ของคุณ (Agent หรือ Task)
 - Syntax เป๊ะๆ ตอน skill body เรียก tool นั้น
-- 3 ตัวรันขนานจริงไหม หรือ Claude Code อาจรันทีละตัว (depend ใน version)
 - Plan mode ขอ approve กี่รอบ (อาจ 1 รอบรวม, อาจ 3 รอบแยก, อาจมากกว่า)
+
+ชื่อ tool กับ syntax ต่างกันได้ แต่กฎ "ส่งทั้ง 3 ใน message เดียว = ขนาน" ใช้ได้เหมือนกันทุก version
 
 **วิธีที่ Lesson นี้จะเดิน:**
 
-1. เรา paste skill body ที่บอก Claude เป็นภาษาคนปกติว่า "dispatch 3 sub-agent ขนาน, ใช้เครื่องมือที่ Claude Code มี (Agent หรือ Task), ถ้าไม่มีใน version ก็ fallback เป็น sequential". ปล่อยให้ Claude หน้าต่าง 2 เลือก mechanism ที่ถูกต้องของ version ตัวเอง
+1. เรา paste skill body ที่บอก Claude เป็นภาษาคนปกติว่า "ใช้เครื่องมือที่ Claude Code มี (Agent หรือ Task) ส่งทั้ง 3 ใน message เดียวให้รันขนาน" ปล่อยให้ Claude หน้าต่าง 2 เลือกชื่อ tool + syntax ที่ถูกของ version ตัวเอง แต่กฎ message เดียวคือ fix
 
-2. รัน demo. ถ้า Claude หน้าต่าง 2 spawn 3 ตัวจริง, เห็นได้จาก: (a) มี 3 plan-mode approvals ขอตามลำดับ หรือ approve ครั้งเดียวที่บอกว่ามี 3 task, (b) chat โชว์ "delegating to fundamentals agent..." หรือคำคล้ายๆ, (c) timing เร็วกว่า v2 visibly. ถ้า fallback sequential ก็ยัง work, แค่ไม่ได้ benefit เร็ว
+2. รัน demo. ถ้า Claude หน้าต่าง 2 spawn 3 ตัวขนานจริง, เห็นได้จาก: (a) chat โชว์ delegate ทั้ง 3 agent พร้อมกันในรอบเดียว ("delegating to [3 ชื่อ]..." หรือคำคล้ายๆ), (b) timing เร็วกว่า v2 visibly เพราะ 3 ตัวรันทับเวลากัน
 
-3. ถ้า mechanism ของ version คุณไม่ตรงกับที่ผม draft, **ถาม Claude ในหน้าต่าง 2 ตรงๆ** ว่า "Claude Code version นี้ dispatch sub-agent ยังไง ใช้ tool ชื่ออะไร syntax เป็นยังไง" Claude จะตอบให้ตาม version ปัจจุบัน, แล้วเราแก้ skill body ตามนั้น
+3. ถ้าชื่อ tool / syntax ของ version คุณไม่ตรงกับที่ผม draft, **ถาม Claude ในหน้าต่าง 2 ตรงๆ** ว่า "Claude Code version นี้ dispatch sub-agent หลายตัวพร้อมกันใน message เดียวยังไง ใช้ tool ชื่ออะไร syntax เป็นยังไง" Claude จะตอบให้ตาม version ปัจจุบัน, แล้วเราแก้ skill body ตามนั้น
 
-นี่คือ honest scope flag, ผมไม่ assert tool name. เรา test by demo.
+parallelism เรา assert (ส่ง message เดียว) ส่วนชื่อ tool เรา test by demo
 
 ---
 
-STOP: รับ honest scope flag นี้ไหม? ถ้า ok พิมพ์ "ok" ไปต่อ ถ้ารู้สึกอยากชัวร์ก่อน ผมแนะนำให้ถาม Claude หน้าต่าง 2 ก่อน paste:
+STOP: เข้าใจกฎ "ส่งทั้ง 3 ใน message เดียว = ขนาน" ไหม? ถ้า ok พิมพ์ "ok" ไปต่อ ถ้าอยากรู้ชื่อ tool ของ version คุณก่อน paste ถาม Claude หน้าต่าง 2 ได้:
 
 ```
-Claude Code version นี้ dispatch sub-agent ยังไง? ใช้ tool ชื่ออะไร (Agent / Task / อื่นๆ) syntax เป็นยังไง?
+Claude Code version นี้ dispatch sub-agent หลายตัวพร้อมกันใน message เดียวยังไง? ใช้ tool ชื่ออะไร (Agent / Task / อื่นๆ) syntax เป็นยังไง?
 ```
 
 ผลที่ Claude หน้าต่าง 2 ตอบกลับมา จะช่วยให้เราปรับ skill body ตาม version จริง
@@ -198,7 +201,7 @@ ACTION: When the student responds:
 
 3. ถ้าถาม "ทำไม Lesson 1 ไม่บอกเลยว่า Agent tool คืออะไร?", ตอบ: "เพราะ Lesson 1-3 ใช้ Claude ตัวเดียวก็พอ sub-agent เป็น tool ที่ specific ต้อง intro ตอนปัญหามันเรียก ตอนนี้คือตอนนั้น"
 
-4. ถ้าถาม "ถ้า version ไม่มี sub-agent เลยล่ะ?", ตอบ: "เกิดยาก แต่ถ้าจริง skill body ที่เราจะ paste มี fallback บอก Claude ว่าถ้าไม่มี sub-agent ให้รันเป็น sequential แต่ section ละ chunk แยก ยังคุม context isolation บางส่วน ไม่ได้ benefit เร็ว แต่ได้ structural improvement อื่น และนี่คือเหตุผลที่ Lesson นี้ test by demo, demo บอกความจริง"
+4. ถ้าถาม "ถ้า version ไม่มี sub-agent เลยล่ะ?", ตอบ: "เกิดยากมาก sub-agent dispatch เป็น feature มาตรฐานของ Claude Code ถ้าเจอ version เก่าจริงๆ ที่ทำไม่ได้ skill body ก็ยังรันแบบ section ละ chunk แยกได้ ยังได้ structural improvement (แต่ละ dimension เขียนแยกรอบ) แค่ไม่ได้ความเร็วจาก parallel นั่นคือ failure path ที่หายาก ไม่ใช่ default ของ Lesson นี้ default คือ 3 ตัวขนานใน message เดียว"
 
 ---
 
@@ -337,7 +340,7 @@ flow ที่อยากให้เดิน:
 กฎเพิ่มเติม agent 3 (news-sentiment) เท่านั้น: ห้ามทำนายตลาด ห้าม "ตลาดยังไม่ price in" รายงานเฉพาะ observable signals (headline, analyst move, catalyst date)
 
 agent return output ผ่าน dispatch tool result ตรงให้ orchestrator ไม่ต้อง save ไฟล์ scratch ก่อน folder sources/ เก็บเฉพาะ source input (10-K excerpt, transcript) ห้ามเขียน agent output ลงไป
-(B) เปิด .claude/skills/company-brief/SKILL.md แก้เฉพาะ Steps section ส่วนอื่น (frontmatter, Output format, Voice rules, When unsure) ห้ามแตะ Steps section ใหม่ต้องเรียก agent 3 ตัว by name (ใช้ชื่อที่ผมตั้ง) ใช้ syntax ที่ Claude Code version นี้รองรับสำหรับเรียก named subagent ถ้าไม่รองรับ parallel ให้ sequential แต่ context isolated main Claude integrate output ทั้ง 3 เป็น brief 6 sections ตาม Output format เดิม
+(B) เปิด .claude/skills/company-brief/SKILL.md แก้เฉพาะ Steps section ส่วนอื่น (frontmatter, Output format, Voice rules, When unsure) ห้ามแตะ Steps section ใหม่ต้องเรียก agent 3 ตัว by name (ใช้ชื่อที่ผมตั้ง) สิ่งที่ต้องเขียนให้ชัดใน Steps section: dispatch agent ทั้ง 3 ตัวใน message เดียว (รอบ tool call เดียว ส่งงานทั้ง 3 พร้อมกัน) เพื่อให้รันขนาน (parallel, รันพร้อมกัน) ห้าม dispatch ทีละตัวรอผลตัวก่อนแล้วค่อยส่งตัวถัดไป เพราะแบบนั้นจะกลายเป็น sequential (รันทีละตัว) ทันที 3 agent นี้ source แยกกัน ไม่ต้องรอผลของกัน เลย dispatch พร้อมกันได้ปลอดภัย ใช้ syntax สำหรับเรียก named subagent ที่ Claude Code version นี้รองรับ (ชื่อ tool อาจเป็น Agent หรือ Task แล้วแต่ version แต่ "ส่งทั้ง 3 ใน message เดียว" คือกฎที่ทำให้ขนานเสมอ ไม่ขึ้นกับชื่อ tool) main Claude รอผลทั้ง 3 กลับมาแล้ว integrate เป็น brief 6 sections ตาม Output format เดิม
 
 ปิดด้วยรายงานสั้นๆ: 3 ชื่อที่ผมตั้ง + 1 บรรทัด role ของแต่ละตัว ผมจะเอาไปบอก Claude หน้าต่าง 1
 
@@ -405,19 +408,19 @@ ACTION: When the student responds:
 
 **วิธีสลับเป็น Auto:** ใน Claude Code version ของคุณ ปุ่มสลับ mode อาจเป็น Tab หรือ Shift+Tab หรือคำสั่ง `/auto` หรือมี picker pop up ตอนเปิด session ลองดูที่ status bar ด้านล่างของหน้าต่าง 2 ถ้าไม่เห็นชัด ถาม Claude หน้าต่าง 2 ตรงๆ ว่า `สลับ mode เป็น Auto ยังไงใน version นี้` Claude จะบอกตาม version ปัจจุบัน
 
-ถ้าอยากอยู่ Plan mode ต่อก็ OK ผมจะใส่ pre-warning ของ 2 path ทั้งคู่ในบล็อคถัดไป Plan mode มี approve ~4-5 รอบ (อธิบายในบุลเลทข้างล่าง) เลือก path ที่คุณ comfortable
+ถ้าอยากอยู่ Plan mode ต่อก็ OK ผมจะใส่ pre-warning ของ 2 path ทั้งคู่ในบล็อคถัดไป รอบนี้ต่างจาก Step 3 นะ Step 3 คือสร้างไฟล์ทีละตัว (agent 3 ไฟล์ + SKILL.md เลย approve หลายรอบตามจำนวนไฟล์) แต่ Step 4 ไม่ได้สร้าง agent files แล้ว (มีอยู่จาก Step 3 หมดแล้ว) Step 4 คือ /brief สั่ง dispatch sub-agent 3 ตัว เพราะงั้น Plan mode รอบนี้น้อยกว่ามาก คาดประมาณ approve รอบเดียวที่ส่ง sub-agent ทั้ง 3 พร้อมกัน + อาจอีกรอบตอนเขียนไฟล์ briefs/<TICKER>.md (จำนวนเป๊ะๆ แล้วแต่ version บางตัว batch รวม บางตัวถามทีละ call) เลือก path ที่คุณ comfortable
 
 **ก่อน paste, ผมเตือนล่วงหน้า:**
 
-- ถ้าสลับเป็น Auto: Claude จะ dispatch ต่อเนื่องไม่มี approval screens ระหว่างทาง ปล่อยรันรอ output 6 sections มา ถ้าอยู่ Plan: approve ~4-5 รอบตามที่อธิบายข้างล่าง **ไม่ต้องตกใจ approve ไปเรื่อยๆ ตามที่ Claude แสดง** ปกติ ทุกครั้งที่ Plan mode ขอ approve ปกติคือ Claude ขอเขียนไฟล์ 1 ตัว (agent 1 → agent 2 → agent 3 → SKILL.md update) approve ไปเรื่อยๆ ตามที่ขึ้นมา ไม่ใช่ error ไม่ใช่ retry แค่ progress ทีละไฟล์
-- ที่บ่งชัดกว่าความเร็วคือ chat text ที่บอกว่ากำลัง spawn/delegate/dispatch (timing เร็วกว่า corroborate แต่อาจ subjective). ถ้าเห็น text นั้น คือ parallel ทำงานจริง
+- ถ้าสลับเป็น Auto: Claude จะ dispatch ต่อเนื่องไม่มี approval screens ระหว่างทาง ปล่อยรันรอ output 6 sections มา ถ้าอยู่ Plan: **ไม่ต้องตกใจ approve ไปเรื่อยๆ ตามที่ Claude แสดง** รอบนี้ไม่ได้สร้าง agent files แล้ว (Step 3 สร้างครบไปแล้ว) Step 4 คือ /brief สั่ง dispatch ทีม sub-agent ที่มีอยู่ เพราะงั้นรอบ approve น้อยกว่า Step 3 เยอะ ที่อยากให้เห็นคือ approve รอบเดียวที่บอกว่ามี sub-agent 3 ตัวรันพร้อมกัน (signal ว่า parallel) + อีกรอบตอนเขียนไฟล์ briefs/<TICKER>.md ถ้า version ไหน batch รวมหมดอาจเหลือรอบเดียว ถ้า version ไหนถามทีละ sub-agent (approve ทีละตัว 3 รอบ) ก็ approve ตามได้ แต่ pattern ทีละตัวคือสัญญาณว่าอาจ dispatch sequential ให้สังเกตไว้ (เทียบกับ STOP ข้อ 2 ข้างล่าง) ทุกรอบไม่ใช่ error ไม่ใช่ retry แค่ progress ปกติ จำนวนเป๊ะๆ ต่างกันตาม version
+- ที่บ่งชัดว่าขนานจริงคือ chat text ที่โชว์ delegate ทั้ง 3 agent พร้อมกันในรอบเดียว (spawn/delegate/dispatch 3 ตัวพร้อมกัน) + timing เร็วกว่า v2 เพราะ 3 ตัวรันทับเวลากัน ถ้าเห็นแบบนี้ คือ parallel ทำงานจริง
 - ถ้า output มา 6 sections และ Latest earnings section อิง earnings transcript ชัด + Company snapshot/Fundamentals signal อิง 10-K ชัด, sub-agent ทำงานจริง
-- ถ้า output มา 6 sections แต่เวลา feel เหมือน v2 (sequential), อาจ Claude fall back sequential ภายใน ไม่ fail, แค่ไม่ได้ benefit เร็ว
+- ถ้า output มา 6 sections แต่เวลา feel เหมือน v2 (รันทีละตัว, sequential) แปลว่า dispatch ไม่ได้ส่งทั้ง 3 ใน message เดียว นี่คือสิ่งที่ต้อง debug (วิธี unblock อยู่ใน STOP ถัดไป) ไม่ใช่จุดจบที่รับได้
 
 ACTION: Tell the student to do these in order:
 
 1. ในหน้าต่าง 2 พิมพ์ `/brief AAPL` (ใช้ ticker เดิมที่ใช้ตั้งแต่ Lesson 1 เพื่อเทียบของจริง).
-2. ถ้า Plan mode ขอ approve, **approve ทุกรอบที่ขึ้นมา** (อาจ 1 อาจ 3 อาจมากกว่า, ปกติ).
+2. ถ้า Plan mode ขอ approve, **approve ทุกรอบที่ขึ้นมา** (ปกติ approve ครั้งเดียวที่บอกว่ามีหลาย task พร้อมกัน ถ้าขอ approve ทีละตัวหลายรอบ = อาจ dispatch ทีละตัว ให้สังเกต approval pattern ต่างกันตาม version)
 3. รอจนเสร็จ ดู chat ว่า:
    - มีข้อความ "spawning..." / "delegating..." / "task..." หรือคำคล้ายๆ ที่บ่งว่า sub-agent ถูก dispatch ไหม?
    - Output 6 sections ครบไหม?
@@ -428,8 +431,8 @@ ACTION: Tell the student to do these in order:
 
 STOP: บอกผม 5 อย่าง:
 
-1. **Mode ที่ใช้**: Auto หรือ Plan? (ถ้า Plan ขอ approve กี่รอบ?)
-2. **Sub-agent signal**: chat โชว์คำที่บ่งว่ามีการ delegate (spawning, task, delegating, agent) ไหม?
+1. **Mode ที่ใช้**: Auto หรือ Plan? (ถ้า Plan: approve แบบ batch รอบเดียวที่ลิสต์ sub-agent 3 ตัวพร้อมกัน หรือถามทีละตัวหลายรอบ?)
+2. **Sub-agent signal**: chat โชว์ว่า delegate ทั้ง 3 agent พร้อมกันในรอบเดียวไหม (spawning/delegating/task ที่อ้าง 3 ชื่อพร้อมกัน) หรือเห็นส่งทีละตัว?
 3. **Section count**: brief output ครบ 6 sections ไหม?
 4. **Speed**: feel เร็วกว่า v2 (Lesson 3) ไหม? (subjective OK)
 5. **Latest earnings quality**: section 3 อิง earnings transcript จาก L3 ไม่แต่งจาก memory ใช่ไหม + section 1+2 อิง 10-K excerpt จาก L4 Step 2.5 ใช่ไหม?
@@ -446,7 +449,7 @@ ACTION: When the student responds:
 
 2. **Delegate signal ชัด + 6 sections + sections อิง source จริง แต่ approval pattern แปลก** (เช่น Plan mode แต่ batch รวมเป็น 1-2 รอบ หรือ Auto mode แต่มี popup ขัด): say "version ของคุณ approval pattern ต่างจากที่ผม draft ไว้ ไม่ผิด sub-agent ก็ยัง dispatch จริง file write ครบ output ใช้ได้" Move to Step 5.
 
-3. **No delegate signal + 6 sections + ไม่ feel เร็ว**: Claude อาจ fall back sequential. ตอบ: "อาจเป็น 1 ใน 2 อย่าง: (a) version ไม่รองรับ parallel dispatch จริงเลย fall back sequential, หรือ (b) Claude อ่าน skill body แล้วเลือก path sequential เพราะคิดว่าเร็วกว่า ลอง paste ใน หน้าต่าง 2: 'เพิ่งรัน /brief AAPL, ตอนนั้น dispatch sub-agent หรือเปล่า ถ้าใช่ใช้ tool ชื่ออะไร ถ้าไม่ใช่ทำไม' Claude จะ explain ให้ ผลลัพธ์ structural ยังดีกว่า v2 แม้ไม่ได้ parallel benefit. ถ้า Claude ตอบว่า fall back, ลอง paste: 'รัน /brief AAPL อีกที force dispatch sub-agent parallel ตามที่ SKILL.md ระบุ ห้าม sequential.' รอบสองอาจ trigger ได้" Then Move to Step 5 anyway, baseline ใช้ได้
+3. **No delegate signal + 6 sections + ไม่ feel เร็ว (รันทีละตัว)**: dispatch ไม่ได้ส่งทั้ง 3 ใน message เดียว นี่คือ bug ที่ debug ได้ ตอบ: "ปัญหาคือ Claude dispatch agent ทีละตัวแทนที่จะส่งทั้ง 3 พร้อมกันใน message เดียว เลยกลายเป็นรันทีละตัว (sequential) วิธีแก้ paste ใน หน้าต่าง 2: 'รัน /brief AAPL อีกที ครั้งนี้ dispatch sub-agent ทั้ง 3 พร้อมกันใน message เดียว ให้รันขนาน ห้ามทีละตัว' รอบสองควรเห็น delegate ทั้ง 3 พร้อมกัน + เร็วขึ้น ถ้าอยากรู้ว่ารอบแรกเกิดอะไร paste เพิ่ม: 'เพิ่งรัน /brief AAPL ตอนนั้น dispatch 3 sub-agent พร้อมกันใน message เดียว หรือส่งทีละตัว' Claude จะ explain ให้" ถ้ารอบสองยังรันทีละตัวจริงๆ (version เก่ามากที่ทำ parallel ไม่ได้ ซึ่งหายาก) output structural ยังดีกว่า v2 ใช้เป็น baseline ได้ Move to Step 5
 
 4. **Output แค่ 4-5 sections, ขาดบาง**: SKILL.md Steps ใหม่ทำให้ Claude สับสน ตอบ: "Steps ใหม่อาจปนกับ Output format เดิม paste ใน หน้าต่าง 2: 'เพิ่งรัน /brief AAPL ออกแค่ N sections, SKILL.md Output format บอกครบ 6 sections ห้าม skip. รัน /brief AAPL อีกครั้ง ครั้งนี้ครบ 6 sections.' รอบสองมัก fix." Re-run.
 
@@ -466,12 +469,12 @@ ACTION: When the student responds:
 
 1. `.claude/skills/company-brief/SKILL.md` Steps section update เป็น **dispatch by name** (เรียก agent 3 ตัวจาก `.claude/agents/` by name ไม่ใช่ inline brief ก้อนใหญ่ใน skill) + frontmatter + Output format + Voice rules + When unsure ของ SKILL.md ยังอยู่ครบ
 2. ไฟล์ใน `.claude/agents/` มี 3 ตัว ตามชื่อที่คุณตั้งตอนสัมภาษณ์ใน Step 3 แต่ละไฟล์มี frontmatter (`name` + `description`) + body ที่บอก source/output/กฎของ agent นั้น ค่า `name:` ใน frontmatter ตรงกับชื่อที่ SKILL.md Steps section เรียก (2 ที่ match กัน)
-3. รัน `/brief <TICKER>` v3 ครบ 6 sections + มี signal ว่า sub-agent ทำงาน (delegate message ที่อ้างชื่อ agent หรือ Claude อธิบายว่าใช้ syntax อะไรเรียก named subagent) ถ้าไม่เห็น signal ชัด แต่ output 6 sections อิง source จริง ให้ข้ามไป Step 5 โดยไม่ต้อง force re-run
+3. รัน `/brief <TICKER>` v3 ครบ 6 sections + เห็น signal ว่า 3 sub-agent dispatch พร้อมกันขนาน (delegate message ที่อ้างชื่อ agent ทั้ง 3 ในรอบเดียว + เร็วกว่า v2) ถ้ายังรันทีละตัว (ไม่เห็น 3 ตัวพร้อมกัน, ไม่เร็วขึ้น) ให้ re-dispatch ก่อน paste ใน หน้าต่าง 2: "รัน /brief อีกที ครั้งนี้ dispatch sub-agent ทั้ง 3 พร้อมกันใน message เดียว ให้รันขนาน ห้ามทีละตัว"
 4. Latest earnings section อิง earnings transcript จาก L3 + Company snapshot/Fundamentals signal อิง 10-K จาก L4 Step 2.5 (ไม่แต่งจาก memory)
 5. ไฟล์ `sources/<TICKER>/10-k-*.md` มีอยู่ (จาก Step 2.5)
 6. หน้าต่าง 2 (folder `my-first-project`) ยังเปิด, Lesson 5 ใช้ต่อ
 
-**หรือถ้า sub-agent ไม่ work ใน version คุณ และคุณเลือกข้าม L4 ไปก่อน** ของจาก L3 ก็พอแล้วสำหรับ L5 กลับมาทำ L4 ตอนหลังได้ พิมพ์ `Start Lesson 5` ได้เลยถ้าตัดสินใจข้าม
+**หรือถ้าคุณคิดว่ายังไม่ต้องการ optimization ของ L4 และเลือกข้ามไปก่อน** ของจาก L3 ก็พอแล้วสำหรับ L5 (L4 = upgrade ไม่ใช่ gate) กลับมาทำ L4 ตอนหลังได้ พิมพ์ `Start Lesson 5` ได้เลยถ้าตัดสินใจข้าม
 
 ---
 
@@ -487,11 +490,11 @@ ACTION: When the student responds:
 
 1. ถ้าผ่าน 6/6, say "ครบ Lesson 4 ผ่าน /brief v3 ของคุณตอนนี้แตกเป็น 3 sub-agent ขนาน structurally แน่นกว่าทุก version ก่อน" Move to "What just happened" + Common Stumbles + handoff
 
-2. ถ้าผ่าน 5/6 และข้อที่ขาดคือข้อ 3 ส่วน sub-agent signal (output 6 sections ครบ แต่ delegate signal ไม่ชัด) แต่ structurally output ดีกว่า v2 visibly, partial pass ได้ "version ของคุณอาจ batch approval หรือไม่ verbose เรื่อง dispatch แต่ output บอกของจริง ใช้ได้" Move on
+2. ถ้าผ่าน 5/6 และข้อที่ขาดคือข้อ 3 ตรง delegate signal (output 6 sections ครบ + เร็วกว่า v2 visibly แต่ chat ไม่ verbose ว่า dispatch ตัวไหนบ้าง) นี่ partial pass ได้ "version ของคุณอาจไม่ verbose เรื่อง dispatch แต่ถ้าเร็วกว่า v2 ชัด คือ 3 ตัวรันขนานจริง output บอกของจริง ใช้ได้" Move on แต่ถ้าทั้งไม่เร็วขึ้น ทั้งไม่เห็น signal = ยังรันทีละตัว ให้ re-dispatch ด้วย "dispatch ทั้ง 3 พร้อมกันใน message เดียว ห้ามทีละตัว" ก่อน
 
 3. ถ้าผ่าน 4/6 หรือต่ำกว่า, focus แก้เฉพาะข้อที่ค้างก่อน ถ้าข้อ 1 (SKILL.md เรียก agent by name) หรือข้อ 2 (3 agent files มี frontmatter) หรือข้อ 3 (6 sections) ขาด = block, ห้ามขึ้น Lesson 5
 
-4. ถ้า student บอก "Plan mode กด approve 7 รอบเหนื่อยมาก" (ใช้ Plan ทั้งๆ ที่ Step 4 แนะนำ Auto), acknowledge: "ครั้งนี้ผ่านมาแล้วก็ดี ครั้งหน้ารัน /brief เริ่มที่ Auto ตั้งแต่แรกได้เลย Plan เก็บไว้ใช้ตอนทำของใหม่จริงๆ"
+4. ถ้า student บอก "Plan mode กด approve หลายรอบเหนื่อยมาก" (ใช้ Plan ทั้งๆ ที่ Step 4 แนะนำ Auto), acknowledge: "ครั้งนี้ผ่านมาแล้วก็ดี ครั้งหน้ารัน /brief เริ่มที่ Auto ตั้งแต่แรกได้เลย Plan เก็บไว้ใช้ตอนทำของใหม่จริงๆ" เสริมนิดถ้าเขาบอกว่าโดนถาม approve เยอะผิดปกติ (เช่นถามทีละ sub-agent หลายรอบ): "ถ้าตอน dispatch มันถามทีละตัวหลายรอบ นั่นคือ signal ว่า version คุณอาจ dispatch ทีละตัว (sequential) ครั้งหน้าลองย้ำใน /brief ว่า 'ส่ง sub-agent ทั้ง 3 พร้อมกันใน message เดียว' จะได้ขนานจริง ไม่ใช่แค่เหนื่อยกด"
 
 ---
 
@@ -504,7 +507,7 @@ ACTION: When the student responds:
 3. รับ honest scope flag เรื่อง syntax สำหรับ named subagent (test by demo, ไม่ assert)
 4. **คุยกับ Claude หน้าต่าง 2 ผ่าน interview flow สั้นๆ** ตอบชื่อ agent 3 ตัวเอง + confirm description ของแต่ละตัว แล้ว Claude สร้างไฟล์ใน `.claude/agents/` ตามชื่อที่คุณตั้ง (frontmatter `name` + `description` + body ที่บอก source/output/กฎ) ของพวกนี้คือ source-of-truth ของแต่ละพนักงาน
 5. ในรอบเดียวกันนั้น Claude หน้าต่าง 2 update `.claude/skills/company-brief/SKILL.md` Steps section ให้ **เรียก agent by name ตามชื่อที่คุณตั้ง** แทน inline brief ทั้งก้อน skill รับหน้าที่ orchestrate, agent definitions รับหน้าที่ของตัวเอง
-6. รัน `/brief <TICKER>` v3 ครั้งแรก, 3 sub-agent ทำงาน (parallel ถ้า version รองรับ, sequential isolated ถ้าไม่รองรับ), main Claude integrate เป็น brief 6 sections
+6. รัน `/brief <TICKER>` v3 ครั้งแรก, 3 sub-agent ทำงานขนาน (dispatch พร้อมกันใน message เดียว เลยรันทับเวลากัน), main Claude รอผลทั้ง 3 แล้ว integrate เป็น brief 6 sections
 7. ผ่าน Plan mode approvals หลายรอบ (ปกติของ sub-agent)
 
 `/brief` ของคุณตอนนี้ structurally แน่นที่สุดในคอร์ส แต่ละ section มี attention เต็มจาก agent ที่ focus หัวข้อนั้น
@@ -524,7 +527,7 @@ ACTION: When the student responds:
 
 - **3 sub-agent race condition** (race condition คือสภาวะที่งานหลายตัวรันพร้อมกันแล้วผลลัพธ์ไม่แน่นอน บางตัวเสร็จก่อน บางตัว fail) **(1 ตัว fail, output partial)**: Claude อาจ fabricate แทน sub-agent ที่ fail กฎ: main Claude **ต้อง report partial honest** ห้ามเติม bullet จาก memory แทน ถ้า earnings agent fail (เช่น transcript file ไม่เจอ) Latest earnings section บอกว่า "sub-agent ไม่สำเร็จ source ไม่ถึง" แทน เห็นในไฟล์แล้วยังแต่ง paste ใน หน้าต่าง 2 ตามที่ผมเขียนใน Step 4 ACTION ข้อ 7
 
-- **เริ่ม Step 4 ใน Plan mode แล้วเริ่มเบื่อ approval กลางทาง**: สลับเป็น Auto ได้กลางคันไม่ต้องรอจบรอบ paste ในหน้าต่าง 2: `สลับเป็น Auto mode ตอนนี้ได้ไหม` Claude จะบอก syntax/ปุ่มของ version นี้ให้ ที่เหลือของ Step ปล่อยรันใน Auto ห้าม Bypass mode (อันตราย, จำที่ Lesson 1 บอกได้).
+- **เริ่ม Step 4 ใน Plan mode แล้วเริ่มเบื่อ approval กลางทาง**: สลับเป็น Auto ได้กลางคันไม่ต้องรอจบรอบ paste ในหน้าต่าง 2: `สลับเป็น Auto mode ตอนนี้ได้ไหม` Claude จะบอก syntax/ปุ่มของ version นี้ให้ ที่เหลือของ Step ปล่อยรันใน Auto ห้าม Bypass mode (อันตราย, จำที่ Lesson 1 บอกได้)
 
 - **Sub-agent context isolation surprises**: fundamentals agent เจอ red flag ใน 10-K (เช่น customer concentration risk ใน Item 1A) แต่ earnings agent ไม่รู้ sentiment agent ก็ไม่รู้ main Claude ต้อง catch ตอน integrate ถ้า Bull/Bear case ใน v3 ดู disconnected (Bear pulse ไม่ตรงกับ Fundamentals signal), paste ใน หน้าต่าง 2: "main Claude ตอน integrate ต้อง cross-reference ทั้ง 3 sub-agent output ถ้า fundamentals signal มี red flag ต้องสะท้อนใน Bear case + Kill conditions" Re-run
 
@@ -536,7 +539,7 @@ ACTION: When the student responds:
 
 - **Output ยังเหมือน v2 ทั้งที่ skill update แล้ว**: skill ไม่ถูก invoke ปัญหา Lesson 2 เก่าๆ ลอง paste "รัน /brief AAPL, ใช้ skill `company-brief` ที่ update Steps แล้ว ห้ามใช้ logic เก่า" หรือ restart หน้าต่าง 2 เพื่อ refresh skill load
 
-- **Cost spike ผ่าน /context**: 3 sub-agent + main = 4 context รัน ถ้า Lesson 3 intro `/context` แล้วและคุณรันดู usage หลัง /brief v3 จะเห็น token เพิ่มจาก v2. expected. trade-off ที่ Step 1 อธิบาย, brief ครั้งสำคัญคุ้มใช้, brief เร็วๆ อาจไม่จำเป็น
+- **Cost spike ผ่าน /context**: 3 sub-agent + main = 4 context รัน ถ้า Lesson 3 intro `/context` แล้วและคุณรันดู usage หลัง /brief v3 จะเห็น token เพิ่มจาก v2 expected trade-off ที่ Step 1 อธิบาย, brief ครั้งสำคัญคุ้มใช้, brief เร็วๆ อาจไม่จำเป็น
 
 - **paste prompt ผิดหน้าต่าง**: prompt ที่ผมส่งทุกอันต้องไปหน้าต่าง 2 (folder `my-first-project`). ถ้าเผลอ paste ใน หน้าต่าง 1 ผมจะตอบเหมือน Claude ปกติ แต่ skill จะถูก edit ใน folder คอร์ส `ltd-ai-101` ไม่ใช่ของคุณ ลบไฟล์ที่หลงสร้างใน `ltd-ai-101` แล้วสลับไปหน้าต่าง 2 paste ใหม่
 
@@ -551,7 +554,7 @@ ACTION: When the student responds:
 - `.claude/skills/company-brief/SKILL.md` Steps section ใช้ sub-agent dispatch แล้ว (frontmatter + Output format + Voice rules + When unsure ยังอยู่)
 - รัน `/brief <TICKER>` v3 ออก 6 sections + อิง source จริง
 - หน้าต่าง 2 (folder `my-first-project`) ยังเปิด Lesson 5 ใช้ต่อ
-- ไฟล์ใน `briefs/` มีอย่างน้อย 3 ตัว (Lesson 5 ต้องการ ≥3 ไฟล์สำหรับ showcase). ถ้ายังมีแค่ AAPL.md ลองรัน `/brief NVDA` และ `/brief GOOGL` ใน หน้าต่าง 2 ก่อน (แต่ละรันใช้เวลาเหมือน AAPL ที่เพิ่งทำ).
+- ไฟล์ใน `briefs/` มีอย่างน้อย 3 ตัว (Lesson 5 ต้องการ ≥3 ไฟล์สำหรับ showcase) ถ้ายังมีแค่ AAPL.md ลองรัน `/brief NVDA` และ `/brief GOOGL` ใน หน้าต่าง 2 ก่อน (แต่ละรันใช้เวลาเหมือน AAPL ที่เพิ่งทำ)
 
 พิมพ์ `Start Lesson 5` ในหน้าต่างนี้ (หน้าต่าง 1 = `ltd-ai-101`) แล้วเปิดหน้าต่าง 2 ค้างไว้
 
